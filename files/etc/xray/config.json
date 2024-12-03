@@ -1,0 +1,12 @@
+{
+    "log": {
+      "loglevel": "info"
+    },
+    "inbounds": [],
+    "outbounds": [],
+    "tlsSettings": {
+      "certificateFile": "/path/to/pfsense-generated-certificate.pem",
+      "keyFile": "/path/to/pfsense-generated-key.pem"
+    }
+  }
+  

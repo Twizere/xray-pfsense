@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ "$2" = "POST-INSTALL" ]; then
+  mkdir -p /usr/local/etc/xray/
+  echo "Xray package installed successfully!"
+fi

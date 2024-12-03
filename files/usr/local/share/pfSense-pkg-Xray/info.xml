@@ -1,0 +1,14 @@
+<pfsensepkgs>
+  <package>
+    <name>Xray</name>
+    <descr><![CDATA[Xray secure tunneling package]]></descr>
+    <version>%%PKGVERSION%%</version>
+    <menu>
+      <tab>VPN</tab>
+      <section>VPN</section>
+      <title>Xray</title>
+      <url>/packages/xray/index.php</url>
+    </menu>
+    <configurationfile>xray.xml</configurationfile>
+  </package>
+</pfsensepkgs>
