@@ -1,18 +1,27 @@
-PORTNAME=        pfSense-pkg-Xray
-PORTVERSION=     0.1
-CATEGORIES=      sysutils
-MAINTAINER=      your-email@example.com
-COMMENT=         Xray package for pfSense
-LICENSE=         BSD2CLAUSE
+PORTNAME=       pfSense-pkg-Xray
+PORTVERSION=    0.1
+CATEGORIES=     net
+MASTER_SITES=   # Leave empty if no external sources are needed
 
-USE_RC_SUBR=     xray
-RUN_DEPENDS=     xray:/usr/local/bin/xray
+MAINTAINER=     your_email@example.com
+COMMENT=        Xray secure tunneling package for pfSense
 
-NO_BUILD=        yes
-NO_ARCH=         yes
+LICENSE=        BSD2CLAUSE
 
-PLIST_FILES=     /usr/local/bin/xray
+USES=           pkgconfig
+NO_BUILD=       yes
+
+PLIST_FILES=    bin/xray \
+                etc/xray/config.json \
+                etc/inc/priv/xray.priv.inc \
+                usr/local/pkg/xray.inc \
+                usr/local/www/packages/xray/index.php
 
 do-install:
-    ${MKDIR} ${STAGEDIR}/usr/local/bin/
-    ${INSTALL_SCRIPT} ${WRKSRC}/files/usr/local/bin/xray ${STAGEDIR}/usr/local/bin/xray
+    ${INSTALL_SCRIPT} ${WRKSRC}/bin/xray ${STAGEDIR}${PREFIX}/bin/
+    ${INSTALL_DATA} ${WRKSRC}/etc/xray/config.json ${STAGEDIR}${PREFIX}/etc/xray/
+    ${INSTALL_DATA} ${WRKSRC}/etc/inc/priv/xray.priv.inc ${STAGEDIR}${PREFIX}/etc/inc/priv/
+    ${INSTALL_DATA} ${WRKSRC}/usr/local/pkg/xray.inc ${STAGEDIR}${PREFIX}/usr/local/pkg/
+    ${INSTALL_DATA} ${WRKSRC}/usr/local/www/packages/xray/index.php ${STAGEDIR}${PREFIX}/usr/local/www/packages/xray/
+
+.include <bsd.port.mk>
