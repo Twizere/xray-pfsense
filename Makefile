@@ -16,8 +16,12 @@ PLIST_FILES=    bin/xray \
                 etc/inc/priv/xray.priv.inc \
                 usr/local/pkg/xray.inc \
                 usr/local/www/packages/xray/index.php
+do-extract:
+	${MKDIR} ${WRKSRC}
+    ${MKDIR} ${STAGEDIR}
 
 do-install:
+    ${MKDIR} ${STAGEDIR}/etc/inc/priv
     ${INSTALL_SCRIPT} ${WRKSRC}/bin/xray ${STAGEDIR}${PREFIX}/bin/
     ${INSTALL_DATA} ${WRKSRC}/etc/xray/config.json ${STAGEDIR}${PREFIX}/etc/xray/
     ${INSTALL_DATA} ${WRKSRC}/etc/inc/priv/xray.priv.inc ${STAGEDIR}${PREFIX}/etc/inc/priv/
