@@ -30,7 +30,7 @@ install:
 	${MKDIR} ${DEST}/www/widgets/widgets
 
 	# Install xray binary (make sure it's executable)
-	install -m 755 ${WRKSRC}/etc/bin/xray ${DEST}/bin/
+	install -m 755 ${WRKSRC}/usr/local/bin/xray ${DEST}/bin/
 
 	# Install configuration files
 	install -m 644 ${WRKSRC}/etc/xray/config.json ${DEST}/etc/xray/
