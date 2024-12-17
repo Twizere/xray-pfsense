@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# PROVIDE: xray
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="xray"
+rcvar=xray_enable
+command="/usr/local/bin/xray"
+config_file="/root/xray/config.json"
+command_args="-config ${config_file}"
+pidfile="/var/run/${name}.pid"
+required_files="${config_file}"
+
+load_rc_config $name
+: ${xray_enable:="NO"}
+
+start_precmd="xray_precmd"
+
+xray_precmd() {
+    if [ ! -d "/var/run" ]; then
+        mkdir -p /var/run
+    fi
+}
+
+run_rc_command "$1"

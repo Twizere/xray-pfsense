@@ -1,0 +1,59 @@
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "inbounds": [
+        {
+            "listen": "0.0.0.0",
+            "port": 49000,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "18253940-ee9a-4128-b43f-d305bd55c300",
+                        "level": 0,
+                        "email": "love@example.com"
+                    },
+                    {
+                        "id": "07478c20-e25c-4c38-90b6-2b50f59ddc0e",
+                        "level": 0,
+                        "email": "admin@example.com"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "serverName": "45.77.16.230",  // Use your server's IP or domain here
+                    "alpn": [
+                        "h2",
+                        "http/1.1"
+                    ],
+                    "certificates": [
+                        {
+                            // "usage": "verify",
+                            "certificateFile": "/root/xray/cert/xray-server-certificate.crt",
+                            "keyFile": "/root/xray/cert/xray-server-certificate.key"
+                            
+                        },
+                        {
+                            "usage": "verify",
+                            "certificateFile": "/root/xray/cert/QT+XRAY+CA.crt"
+                            
+                        }
+                    ],
+                    "disableSystemRoot": true,
+                    "allowInsecure": false
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        }
+    ]
+}
