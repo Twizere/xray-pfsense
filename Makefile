@@ -24,13 +24,13 @@ install:
 	# Create necessary directories
 	${MKDIR} ${DEST}/bin
 	${MKDIR} ${DEST}/etc/xray
-    ${MKDIR} ${DEST}/etc/rc.d
 	${MKDIR} ${DEST}/etc/inc/priv
 	${MKDIR} ${DEST}/pkg
 	${MKDIR} ${DEST}/www/packages/xray
 	${MKDIR} ${DEST}/www/widgets/widgets
     ${MKDIR} ${DEST}/www/widgets/include
     ${MKDIR} ${DEST}/www/widgets/javascript
+    ${MKDIR} ${DEST}/etc/rc.d
 
 	# Install xray binary (make sure it's executable)
 	install -m 755 ${WRKSRC}${DEST}/bin/xray ${DEST}/bin/
