@@ -24,31 +24,20 @@ install:
 	# Create necessary directories
 	${MKDIR} ${DEST}/bin
 	${MKDIR} ${DEST}/etc/xray
-    ${MKDIR} ${DEST}/etc/rc.d
 	${MKDIR} ${DEST}/etc/inc/priv
 	${MKDIR} ${DEST}/pkg
 	${MKDIR} ${DEST}/www/packages/xray
-	${MKDIR} ${DEST}/www/widgets/widgets/widgets
-    ${MKDIR} ${DEST}/www/widgets/widgets/include
-    ${MKDIR} ${DEST}/www/widgets/widgets/javascriot
-    
+	${MKDIR} ${DEST}/www/widgets/widgets
 
 	# Install xray binary (make sure it's executable)
-	install -m 755 ${WRKSRC}/usr/local/bin/xray ${DEST}/bin/
-
-    # Install xray serbice (make sure it's executable)
-	install -m 755 ${WRKSRC}/etc/rc.d/xray-service ${DEST}/etc/rc.d/
+	install -m 755 ${WRKSRC}/etc/bin/xray ${DEST}/bin/
 
 	# Install configuration files
 	install -m 644 ${WRKSRC}/etc/xray/config.json ${DEST}/etc/xray/
 	install -m 644 ${WRKSRC}/etc/inc/priv/xray.priv.inc ${DEST}/etc/inc/priv/
-	install -m 644 ${WRKSRC}/usr/local/pkg/xray.inc ${DEST}/pkg/
-	install -m 644 ${WRKSRC}/usr/local/www/packages/xray/index.php ${DEST}/www/packages/xray/
-	install -m 644 ${WRKSRC}/usr/local/www/widgets/widgets/xray.widget.php ${DEST}/www/widgets/widgets/
-
-    # Installing the service
-    chmod +x ${DEST}/etc/rc.d/xray-service
-    sysrc xrayservice_enable="YES"
+	install -m 644 ${WRKSRC}/usr/local/pkg/xray.inc ${DEST}/usr/local/pkg/
+	install -m 644 ${WRKSRC}/usr/local/www/packages/xray/index.php ${DEST}/usr/local/www/packages/xray/
+	install -m 644 ${WRKSRC}/usr/local/www/widgets/xray.widget.php ${DEST}/usr/local/www/widgets/widgets/
 
 # Clean up (optional)
 do-clean:
