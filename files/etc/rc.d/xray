@@ -25,4 +25,6 @@ xray_precmd() {
     fi
 }
 
+start_cmd="${command} ${command_args} > ${log_file} 2>&1 &"  # Run in background and redirect output
+
 run_rc_command "$1"
