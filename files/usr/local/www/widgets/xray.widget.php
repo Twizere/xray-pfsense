@@ -15,7 +15,7 @@
 // }
 
 // Collecting data
-$uptime = shell_exec("uptime -p");
+$uptime = shell_exec("uptime");
 $cpu_usage = shell_exec("sysctl -n kern.cp_time");
 $load = shell_exec("sysctl -n vm.loadavg");
 
@@ -31,14 +31,14 @@ if (!$load) {
 }
 
 // Debugging output (log to the system log)
-error_log("XRay Demo Widget - Uptime: " . $uptime);
-error_log("XRay Demo Widget - CPU Usage: " . $cpu_usage);
-error_log("XRay Demo Widget - Load Avg: " . $load);
+error_log("XRay VPN Widget - Uptime: " . $uptime);
+error_log("XRay VPN Widget - CPU Usage: " . $cpu_usage);
+error_log("XRay VPN Widget - Load Avg: " . $load);
 
 ?>
 
 <div class="widget-content">
-    <h3 class="widget-title"><?php echo gettext('XRay Demo Widget'); ?></h3>
+    <h3 class="widget-title"><?php echo gettext('XRay VPN Status'); ?></h3>
     <ul class="list-group">
         <li class="list-group-item">
             <strong><?php echo gettext('System Uptime'); ?>:</strong> <?php echo htmlspecialchars($uptime); ?>
