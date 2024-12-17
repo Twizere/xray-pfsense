@@ -30,14 +30,14 @@ install:
 	${MKDIR} ${DEST}/www/widgets/widgets
 
 	# Install xray binary (make sure it's executable)
-	install -m 755 ${WRKSRC}/bin/xray ${DEST}/bin/
+	install -m 755 ${WRKSRC}/etc/bin/xray ${DEST}/bin/
 
-	# # Install configuration files
-	# install -m 644 ${WRKSRC}/etc/xray/config.json ${DEST}/etc/xray/
-	# install -m 644 ${WRKSRC}/etc/inc/priv/xray.priv.inc ${DEST}/etc/inc/priv/
-	# install -m 644 ${WRKSRC}/usr/local/pkg/xray.inc ${DEST}/usr/local/pkg/
-	# install -m 644 ${WRKSRC}/usr/local/www/packages/xray/index.php ${DEST}/usr/local/www/packages/xray/
-	# install -m 644 ${WRKSRC}/usr/local/www/widgets/xray.widget.php ${DEST}/usr/local/www/widgets/widgets/
+	# Install configuration files
+	install -m 644 ${WRKSRC}/etc/xray/config.json ${DEST}/etc/xray/
+	install -m 644 ${WRKSRC}/etc/inc/priv/xray.priv.inc ${DEST}/etc/inc/priv/
+	install -m 644 ${WRKSRC}/usr/local/pkg/xray.inc ${DEST}/usr/local/pkg/
+	install -m 644 ${WRKSRC}/usr/local/www/packages/xray/index.php ${DEST}/usr/local/www/packages/xray/
+	install -m 644 ${WRKSRC}/usr/local/www/widgets/xray.widget.php ${DEST}/usr/local/www/widgets/widgets/
 
 # Clean up (optional)
 do-clean:
