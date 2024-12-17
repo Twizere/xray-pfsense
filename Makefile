@@ -8,8 +8,7 @@ COMMENT=        Xray secure tunneling package for pfSense
 LICENSE=        BSD2CLAUSE
 
 # Set default values for directories
-PREFIX?=/usr/local
-DESTDIR?=
+DEST?=/usr/local
 WRKSRC=.
 MKDIR=mkdir -p
 
@@ -23,22 +22,22 @@ do-install:
 	@echo "Installing Xray package..."
 
 	# Create necessary directories
-	${MKDIR} ${DESTDIR}${PREFIX}/bin
-	${MKDIR} ${DESTDIR}${PREFIX}/etc/xray
-	${MKDIR} ${DESTDIR}${PREFIX}/etc/inc/priv
-	${MKDIR} ${DESTDIR}${PREFIX}/pkg
-	${MKDIR} ${DESTDIR}${PREFIX}/www/packages/xray
-    ${MKDIR} ${DESTDIR}${PREFIX}/www/widgets/widgets
+	${MKDIR} ${DEST}/bin
+	${MKDIR} ${DEST}/etc/xray
+	${MKDIR} ${DEST}/etc/inc/priv
+	${MKDIR} ${DEST}/pkg
+	${MKDIR} ${DEST}/www/packages/xray
+    ${MKDIR} ${DEST}/www/widgets/widgets
 
 	# Install xray binary (make sure it's executable)
-	install -m 755 ${WRKSRC}/bin/xray ${DESTDIR}${PREFIX}/bin/
+	install -m 755 ${WRKSRC}/bin/xray ${DEST}/bin/
 
 	# Install configuration files
-	install -m 644 ${WRKSRC}/etc/xray/config.json ${DESTDIR}${PREFIX}/etc/xray/
-	install -m 644 ${WRKSRC}/etc/inc/priv/xray.priv.inc ${DESTDIR}${PREFIX}/etc/inc/priv/
-	install -m 644 ${WRKSRC}/usr/local/pkg/xray.inc ${DESTDIR}${PREFIX}/usr/local/pkg/
-	install -m 644 ${WRKSRC}/usr/local/www/packages/xray/index.php ${DESTDIR}${PREFIX}/usr/local/www/packages/xray/
-    install -m 644 ${WRKSRC}/usr/local/www/widgets/xray.widget.php ${DESTDIR}${PREFIX}/usr/local/www/widgets/widgets/
+	install -m 644 ${WRKSRC}/etc/xray/config.json ${DEST}/etc/xray/
+	install -m 644 ${WRKSRC}/etc/inc/priv/xray.priv.inc ${DEST}/etc/inc/priv/
+	install -m 644 ${WRKSRC}/usr/local/pkg/xray.inc ${DEST}/usr/local/pkg/
+	install -m 644 ${WRKSRC}/usr/local/www/packages/xray/index.php ${DEST}/usr/local/www/packages/xray/
+    install -m 644 ${WRKSRC}/usr/local/www/widgets/xray.widget.php ${DEST}/usr/local/www/widgets/widgets/
 # Clean up (optional)
 do-clean:
 	@echo "Cleaning up..."
