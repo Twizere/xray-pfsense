@@ -27,7 +27,10 @@ install:
 	${MKDIR} ${DEST}/etc/inc/priv
 	${MKDIR} ${DEST}/pkg
 	${MKDIR} ${DEST}/www/packages/xray
-	${MKDIR} ${DEST}/www/widgets/widgets
+	${MKDIR} ${DEST}/www/widgets/widgets/widgets
+    ${MKDIR} ${DEST}/www/widgets/widgets/include
+    ${MKDIR} ${DEST}/www/widgets/widgets/javAddascriot
+    
 
 	# Install xray binary (make sure it's executable)
 	install -m 755 ${WRKSRC}/usr/local/bin/xray ${DEST}/bin/
@@ -37,7 +40,7 @@ install:
 	install -m 644 ${WRKSRC}/etc/inc/priv/xray.priv.inc ${DEST}/etc/inc/priv/
 	install -m 644 ${WRKSRC}/usr/local/pkg/xray.inc ${DEST}/pkg/
 	install -m 644 ${WRKSRC}/usr/local/www/packages/xray/index.php ${DEST}/www/packages/xray/
-	install -m 644 ${WRKSRC}/usr/local/www/widgets/xray.widget.php ${DEST}/www/widgets/widgets/
+	install -m 644 ${WRKSRC}/usr/local/www/widgets/widgets/xray.widget.php ${DEST}/www/widgets/widgets/
 
 # Clean up (optional)
 do-clean:
