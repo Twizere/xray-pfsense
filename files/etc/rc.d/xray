@@ -6,8 +6,8 @@
 
 . /etc/rc.subr
 
-name="xray-service"
-rcvar=xrayservice_enable
+name="xray"
+rcvar="xray_enable"
 command="/usr/local/bin/xray"
 config_file="/usr/local/etc/xray/config.json"
 command_args="-config ${config_file}"

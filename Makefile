@@ -44,8 +44,12 @@ install:
 	install -m 644 ${WRKSRC}${DEST}/www/widgets/widgets/xray.widget.php ${DEST}/www/widgets/widgets/
     # Installing the service
 	@echo "Installing the service..."
-	chmod +x ${DEST}/etc/rc.d/xray-service
-	sysrc xrayservice_enable="YES"
+	chmod +x ${DEST}/etc/rc.d/xray
+	sysrc xray_enable="YES"
+
+    @echo "Running the service..."
+    service xray start
+
 
 # Clean up (optional)
 do-clean:
