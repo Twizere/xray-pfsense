@@ -24,10 +24,13 @@ install:
 	# Create necessary directories
 	${MKDIR} ${DEST}/bin
 	${MKDIR} ${DEST}/etc/xray
+    ${MKDIR} ${DEST}/etc/rc.d
 	${MKDIR} ${DEST}/etc/inc/priv
 	${MKDIR} ${DEST}/pkg
 	${MKDIR} ${DEST}/www/packages/xray
 	${MKDIR} ${DEST}/www/widgets/widgets
+    ${MKDIR} ${DEST}/www/widgets/include
+    ${MKDIR} ${DEST}/www/widgets/javascript
 
 	# Install xray binary (make sure it's executable)
 	install -m 755 ${WRKSRC}${DEST}/bin/xray ${DEST}/bin/
@@ -37,7 +40,7 @@ install:
 	install -m 644 ${WRKSRC}/etc/inc/priv/xray.priv.inc ${DEST}/etc/inc/priv/
 	install -m 644 ${WRKSRC}${DEST}/pkg/xray.inc ${DEST}/pkg/
 	install -m 644 ${WRKSRC}${DEST}/www/packages/xray/index.php ${DEST}/www/packages/xray/
-	install -m 644 ${WRKSRC}${DEST}/www/widgets/xray.widget.php ${DEST}/www/widgets/widgets/
+	install -m 644 ${WRKSRC}${DEST}/www/widgets/widgets/xray.widget.php ${DEST}/www/widgets/widgets/
 
 # Clean up (optional)
 do-clean:
