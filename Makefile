@@ -1,32 +1,45 @@
 PORTNAME=       pfSense-pkg-Xray
 PORTVERSION=    0.1
 CATEGORIES=     net
-MASTER_SITES=   # Leave empty if no external sources are needed
 
 MAINTAINER=     your_email@example.com
 COMMENT=        Xray secure tunneling package for pfSense
 
 LICENSE=        BSD2CLAUSE
 
-USES=           pkgconfig
-NO_BUILD=       yes
+# Set default values for directories
+PREFIX?=/usr/local
+DESTDIR?=
+WRKSRC=.
 
-PLIST_FILES=    bin/xray \
-                etc/xray/config.json \
-                etc/inc/priv/xray.priv.inc \
-                usr/local/pkg/xray.inc \
-                usr/local/www/packages/xray/index.php
+# Extract phase (not used in BSD ports without bsd.port.mk)
 do-extract:
-#	 ${MKDIR} ${WRKSRC}
+	@echo "Extracting package files..."
+	${MKDIR} ${WRKSRC}
 
+# Install phase
 do-install:
-#     ${MKDIR} ${WRKSRC}/etc/inc/priv
-#     ${INSTALL_SCRIPT} ${WRKSRC}/bin/xray ${STAGEDIR}${PREFIX}/bin/
-#     ${INSTALL_DATA} ${WRKSRC}/etc/xray/config.json ${STAGEDIR}${PREFIX}/etc/xray/
-#     ${INSTALL_DATA} ${WRKSRC}/etc/inc/priv/xray.priv.inc ${STAGEDIR}${PREFIX}/etc/inc/priv/
-#     ${INSTALL_DATA} ${WRKSRC}/usr/local/pkg/xray.inc ${STAGEDIR}${PREFIX}/usr/local/pkg/
-#     ${INSTALL_DATA} ${WRKSRC}/usr/local/www/packages/xray/index.php ${STAGEDIR}${PREFIX}/usr/local/www/packages/xray/
+	@echo "Installing Xray package..."
 
-# .include <bsd.port.mk>
+	# Create necessary directories
+	${MKDIR} ${DESTDIR}${PREFIX}/bin
+	${MKDIR} ${DESTDIR}${PREFIX}/etc/xray
+	${MKDIR} ${DESTDIR}${PREFIX}/etc/inc/priv
+	${MKDIR} ${DESTDIR}${PREFIX}/pkg
+	${MKDIR} ${DESTDIR}${PREFIX}/www/packages/xray
+    ${MKDIR} ${DESTDIR}${PREFIX}/www/widgets/widgets
 
+	# Install xray binary (make sure it's executable)
+	install -m 755 ${WRKSRC}/bin/xray ${DESTDIR}${PREFIX}/bin/
+
+	# Install configuration files
+	install -m 644 ${WRKSRC}/etc/xray/config.json ${DESTDIR}${PREFIX}/etc/xray/
+	install -m 644 ${WRKSRC}/etc/inc/priv/xray.priv.inc ${DESTDIR}${PREFIX}/etc/inc/priv/
+	install -m 644 ${WRKSRC}/usr/local/pkg/xray.inc ${DESTDIR}${PREFIX}/usr/local/pkg/
+	install -m 644 ${WRKSRC}/usr/local/www/packages/xray/index.php ${DESTDIR}${PREFIX}/usr/local/www/packages/xray/
+    install -m 644 ${WRKSRC}/usr/local/www/widgets/xray.widget.php ${DESTDIR}${PREFIX}/usr/local/www/widgets/widgets/
+# Clean up (optional)
+do-clean:
+	@echo "Cleaning up..."
+#	rm -rf ${WRKSRC}
 
