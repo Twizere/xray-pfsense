@@ -47,7 +47,8 @@ install:
 	chmod +x ${DEST}/etc/rc.d/xray
 	sysrc xray_enable="YES"
 
-    @echo "Running the service..."
+     # Installing the service
+	@echo "Running the service"
     service xray start
 
 
