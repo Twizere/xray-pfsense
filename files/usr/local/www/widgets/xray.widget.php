@@ -1,9 +1,11 @@
 <?php
 /*
+ * xraydemo.widget.php
+ * 
  * This is a simple demo widget for pfSense.
  * The widget will display some basic system information.
  * 
- * Copyright (C) 2024 
+ * Copyright (C) 2024 YourName
  * All rights reserved.
  */
 
@@ -12,12 +14,26 @@
 //     return;
 // }
 
-
-
-// You can collect whatever data you want here. For this example, let's get the system uptime and some basic stats.
+// Collecting data
 $uptime = shell_exec("uptime -p");
-$cpu_usage = sysctl("kern.cp_time");
-$load = sysctl("vm.loadavg");
+$cpu_usage = shell_exec("sysctl -n kern.cp_time");
+$load = shell_exec("sysctl -n vm.loadavg");
+
+// Check if any of the commands return null or empty
+if (!$uptime) {
+    $uptime = "Error: Unable to fetch uptime.";
+}
+if (!$cpu_usage) {
+    $cpu_usage = "Error: Unable to fetch CPU usage.";
+}
+if (!$load) {
+    $load = "Error: Unable to fetch load average.";
+}
+
+// Debugging output (log to the system log)
+error_log("XRay Demo Widget - Uptime: " . $uptime);
+error_log("XRay Demo Widget - CPU Usage: " . $cpu_usage);
+error_log("XRay Demo Widget - Load Avg: " . $load);
 
 ?>
 

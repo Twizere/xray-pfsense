@@ -17,14 +17,16 @@ PLIST_FILES=    bin/xray \
                 usr/local/pkg/xray.inc \
                 usr/local/www/packages/xray/index.php
 do-extract:
-	${MKDIR} ${WRKSRC}
+#	 ${MKDIR} ${WRKSRC}
 
 do-install:
-    ${MKDIR} ${WRKSRC}/etc/inc/priv
-    ${INSTALL_SCRIPT} ${WRKSRC}/bin/xray ${STAGEDIR}${PREFIX}/bin/
-    ${INSTALL_DATA} ${WRKSRC}/etc/xray/config.json ${STAGEDIR}${PREFIX}/etc/xray/
-    ${INSTALL_DATA} ${WRKSRC}/etc/inc/priv/xray.priv.inc ${STAGEDIR}${PREFIX}/etc/inc/priv/
-    ${INSTALL_DATA} ${WRKSRC}/usr/local/pkg/xray.inc ${STAGEDIR}${PREFIX}/usr/local/pkg/
-    ${INSTALL_DATA} ${WRKSRC}/usr/local/www/packages/xray/index.php ${STAGEDIR}${PREFIX}/usr/local/www/packages/xray/
+#     ${MKDIR} ${WRKSRC}/etc/inc/priv
+#     ${INSTALL_SCRIPT} ${WRKSRC}/bin/xray ${STAGEDIR}${PREFIX}/bin/
+#     ${INSTALL_DATA} ${WRKSRC}/etc/xray/config.json ${STAGEDIR}${PREFIX}/etc/xray/
+#     ${INSTALL_DATA} ${WRKSRC}/etc/inc/priv/xray.priv.inc ${STAGEDIR}${PREFIX}/etc/inc/priv/
+#     ${INSTALL_DATA} ${WRKSRC}/usr/local/pkg/xray.inc ${STAGEDIR}${PREFIX}/usr/local/pkg/
+#     ${INSTALL_DATA} ${WRKSRC}/usr/local/www/packages/xray/index.php ${STAGEDIR}${PREFIX}/usr/local/www/packages/xray/
 
-.include <bsd.port.mk>
+# .include <bsd.port.mk>
+
+
