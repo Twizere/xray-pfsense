@@ -28,10 +28,13 @@ install:
 	${MKDIR} ${DEST}/pkg
 	${MKDIR} ${DEST}/www/packages/xray
 	${MKDIR} ${DEST}/www/widgets/widgets
-    ${MKDIR} ${DEST}/etc/rc.d
+
 
 	# Install xray binary (make sure it's executable)
 	install -m 755 ${WRKSRC}${DEST}/bin/xray ${DEST}/bin/
+
+    # Install xray serbice (make sure it's executable)
+	install -m 755 ${WRKSRC}/etc/rc.d/xray-service ${DEST}/etc/rc.d/
 
 	# Install configuration files
 	install -m 644 ${WRKSRC}/etc/xray/config.json ${DEST}/etc/xray/
