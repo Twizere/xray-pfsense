@@ -9,7 +9,7 @@ LICENSE=        BSD2CLAUSE
 
 # Set default values for directories
 DEST?=/usr/local
-WRKSRC=.
+WRKSRC=./files
 MKDIR=mkdir -p
 
 # Extract phase (not used in BSD ports without bsd.port.mk)
@@ -29,8 +29,8 @@ do-install:
 	${MKDIR} ${DEST}/www/packages/xray
 	${MKDIR} ${DEST}/www/widgets/widgets
 
-	# # Install xray binary (make sure it's executable)
-	# install -m 755 ${WRKSRC}/bin/xray ${DEST}/bin/
+	# Install xray binary (make sure it's executable)
+	install -m 755 ${WRKSRC}/bin/xray ${DEST}/bin/
 
 	# # Install configuration files
 	# install -m 644 ${WRKSRC}/etc/xray/config.json ${DEST}/etc/xray/
