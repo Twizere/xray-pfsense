@@ -28,8 +28,6 @@ install:
 	${MKDIR} ${DEST}/pkg
 	${MKDIR} ${DEST}/www/packages/xray
 	${MKDIR} ${DEST}/www/widgets/widgets
-    ${MKDIR} ${DEST}/www/widgets/include
-    ${MKDIR} ${DEST}/www/widgets/javascript
     ${MKDIR} ${DEST}/etc/rc.d
 
 	# Install xray binary (make sure it's executable)
