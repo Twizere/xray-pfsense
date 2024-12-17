@@ -49,7 +49,7 @@ install:
 
      # Installing the service
 	@echo "Running the service"
-    service xray start
+	service xray start
 
 
 # Clean up (optional)
