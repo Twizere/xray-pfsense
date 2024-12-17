@@ -11,6 +11,7 @@ LICENSE=        BSD2CLAUSE
 PREFIX?=/usr/local
 DESTDIR?=
 WRKSRC=.
+MKDIR=mkdir -p
 
 # Extract phase (not used in BSD ports without bsd.port.mk)
 do-extract:
