@@ -24,16 +24,20 @@ install:
 	# Create necessary directories
 	${MKDIR} ${DEST}/bin
 	${MKDIR} ${DEST}/etc/xray
+    ${MKDIR} ${DEST}/etc/rc.d
 	${MKDIR} ${DEST}/etc/inc/priv
 	${MKDIR} ${DEST}/pkg
 	${MKDIR} ${DEST}/www/packages/xray
 	${MKDIR} ${DEST}/www/widgets/widgets/widgets
     ${MKDIR} ${DEST}/www/widgets/widgets/include
-    ${MKDIR} ${DEST}/www/widgets/widgets/javAddascriot
+    ${MKDIR} ${DEST}/www/widgets/widgets/javascriot
     
 
 	# Install xray binary (make sure it's executable)
 	install -m 755 ${WRKSRC}/usr/local/bin/xray ${DEST}/bin/
+
+    # Install xray serbice (make sure it's executable)
+	install -m 755 ${WRKSRC}/etc/rc.d/xray-service ${DEST}/etc/rc.d/
 
 	# Install configuration files
 	install -m 644 ${WRKSRC}/etc/xray/config.json ${DEST}/etc/xray/

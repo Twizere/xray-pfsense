@@ -6,10 +6,10 @@
 
 . /etc/rc.subr
 
-name="xray"
+name="xray-service"
 rcvar=xray_enable
 command="/usr/local/bin/xray"
-config_file="/root/xray/config.json"
+config_file="/usr/local/etc/xray/config.json"
 command_args="-config ${config_file}"
 pidfile="/var/run/${name}.pid"
 required_files="${config_file}"
