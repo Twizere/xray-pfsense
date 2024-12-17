@@ -18,7 +18,7 @@ do-extract:
 	${MKDIR} ${WRKSRC}
 
 # Install phase
-do-install:
+install:
 	@echo "Installing Xray package..."
 
 	# Create necessary directories
