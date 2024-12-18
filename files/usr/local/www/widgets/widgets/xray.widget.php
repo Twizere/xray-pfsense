@@ -3,7 +3,7 @@
  * xraydemo.widget.php
  * 
  * This is a simple demo widget for pfSense.
- * The widget will display the XRay service status, certificate locations, and client list.
+ * The widget will display the XRay service status, certificate locations, and client list in table format.
  * 
  * Copyright (C) 2024 YourName
  * All rights reserved.
@@ -45,35 +45,43 @@ error_log("XRay VPN Widget - Xray config file found: " . $config_file);
     <h3 class="widget-title"><?php echo gettext('XRay VPN Status'); ?></h3>
 
     <?php if (isset($config_data)): ?>
-        <ul class="list-group">
-            <!-- Display the certificates -->
-            <li class="list-group-item">
-                <strong><?php echo gettext('Certificates:'); ?></strong>
-                <ul>
-                    <?php foreach ($certificates as $cert): ?>
-                        <li>
-                            <?php echo gettext('Certificate File:'); ?> <?php echo htmlspecialchars($cert['certificateFile']); ?><br>
-                            <?php if (isset($cert['keyFile'])): ?>
-                                <?php echo gettext('Key File:'); ?> <?php echo htmlspecialchars($cert['keyFile']); ?>
-                            <?php endif; ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </li>
+        <!-- Certificates Table -->
+        <h4><?php echo gettext('Certificates:'); ?></h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><?php echo gettext('Certificate File'); ?></th>
+                    <th><?php echo gettext('Key File'); ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($certificates as $cert): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($cert['certificateFile']); ?></td>
+                        <td><?php echo isset($cert['keyFile']) ? htmlspecialchars($cert['keyFile']) : 'N/A'; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
 
-            <!-- Display the list of clients -->
-            <li class="list-group-item">
-                <strong><?php echo gettext('Clients:'); ?></strong>
-                <ul>
-                    <?php foreach ($clients as $client): ?>
-                        <li>
-                            <?php echo gettext('ID:'); ?> <?php echo htmlspecialchars($client['id']); ?><br>
-                            <?php echo gettext('Email:'); ?> <?php echo htmlspecialchars($client['email']); ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </li>
-        </ul>
+        <!-- Clients Table -->
+        <h4><?php echo gettext('Clients:'); ?></h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><?php echo gettext('ID'); ?></th>
+                    <th><?php echo gettext('Email'); ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($clients as $client): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($client['id']); ?></td>
+                        <td><?php echo htmlspecialchars($client['email']); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     <?php else: ?>
         <p><?php echo gettext('Error: Unable to load Xray configuration.'); ?></p>
     <?php endif; ?>
@@ -87,8 +95,20 @@ error_log("XRay VPN Widget - Xray config file found: " . $config_file);
         font-size: 1.2em;
         margin-bottom: 10px;
     }
-    .list-group-item {
-        font-size: 1em;
+    .table {
+        width: 100%;
+        margin-bottom: 15px;
+        border-collapse: collapse;
+    }
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+    .table th, .table td {
         padding: 8px 15px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+    .table th {
+        background-color: #f2f2f2;
     }
 </style>
