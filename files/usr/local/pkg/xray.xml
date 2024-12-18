@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE packagegui SYSTEM "../schema/packages.dtd">
+<?xml-stylesheet type="text/xsl" href="../xsl/package.xsl"?>
+<packagegui>
+	<copyright>
+	</copyright>
+	<name>xray</name>
+	<version>1.0</version>
+	<title>VPN/Xray</title>
+	<menu>
+		<name>Xray</name>
+		<section>VPN</section>
+		<url>/xray/index.php</url>
+	</menu>
+</packagegui>
