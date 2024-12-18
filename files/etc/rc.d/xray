@@ -31,7 +31,7 @@ start_xray() {
     echo -e "\033[0;32m"
     # Check if Xray is already running
     if pgrep -f "/usr/local/bin/xray" > /dev/null; then
-        echo  "Xray is already running."
+        echo -e "Xray is already running."
     else
         ${command} ${command_args} > /var/log/xray_service.log 2>&1 &
         echo $! > ${pidfile}
