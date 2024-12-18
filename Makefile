@@ -47,7 +47,7 @@ install:
 
 	#displaying the menu    
 	install -m 644 ${WRKSRC}${DEST}/share/pfSense-pkg-Xray/info.xml ${DEST}/share/pfSense-pkg-Xray/
-
+	install -m 644 ${WRKSRC}${DEST}/share/pfSense-pkg-Xray/info.xml ${DEST}/share/pfSense/menu/xray.xml
     # Installing the service
 	@echo "Installing the service..."
 	chmod +x ${DEST}/etc/rc.d/xray
