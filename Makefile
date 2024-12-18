@@ -39,7 +39,7 @@ install:
 	# Install configuration files
 	install -m 644 ${WRKSRC}/etc/xray/config.json ${DEST}/etc/xray/
 	install -m 644 ${WRKSRC}/etc/inc/priv/xray.priv.inc ${DEST}/etc/inc/priv/
-	install -m 644 ${WRKSRC}${DEST}/pkg/xray.xml ${DEST}/pkg/
+	install -m 644 ${WRKSRC}${DEST}/pkg/*.* ${DEST}/pkg/
 	install -m 644 ${WRKSRC}${DEST}/www/widgets/widgets/*.php ${DEST}/www/widgets/widgets/
 	install -m 644 ${WRKSRC}${DEST}/www/xray/*.php ${DEST}/www/xray/
 
