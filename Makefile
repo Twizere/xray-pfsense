@@ -53,7 +53,7 @@ install:
 	if ! pgrep -f "/usr/local/bin/xray" > /dev/null; then \
 		service xray start; \
 	else \
-		echo "Xray is already running."; \
+		echo -e "\033[0;32mXray is already running.\033[0m"; \
 	fi
 
 
