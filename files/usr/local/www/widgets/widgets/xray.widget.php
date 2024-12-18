@@ -53,7 +53,10 @@ error_log("XRay VPN Widget - Xray config file found: " . $config_file);
 
     <!-- XRay Service Status -->
     <div class="status">
-        <strong><?php echo gettext('XRay Service Status'); ?>:</strong> <?php echo $is_running; ?>
+        <strong><?php echo gettext('XRay Service Status'); ?>:</strong> 
+        <span class="<?php echo $is_running == "Running" ? "status-running" : "status-stopped"; ?>">
+            <?php echo $is_running; ?>
+        </span>
     </div>
 
     <!-- Log File Location -->
@@ -131,5 +134,17 @@ error_log("XRay VPN Widget - Xray config file found: " . $config_file);
     }
     .table th {
         background-color: #f2f2f2;
+    }
+
+    /* Green for Running status */
+    .status-running {
+        color: green;
+        font-weight: bold;
+    }
+
+    /* Red for Stopped status */
+    .status-stopped {
+        color: red;
+        font-weight: bold;
     }
 </style>
