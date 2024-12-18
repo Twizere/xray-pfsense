@@ -13,7 +13,7 @@ config_file="/usr/local/etc/xray/config.json"
 command_args="-config ${config_file}"
 pidfile="/var/run/${name}.pid"
 required_files="${config_file}"
-
+log_file="/var/log/xray_service.log"  # Optional log file
 load_rc_config $name
 : ${xray_enable:="NO"}
 
@@ -25,6 +25,6 @@ xray_precmd() {
     fi
 }
 
-# start_cmd="${command} ${command_args} > ${log_file} 2>&1 &"  # Run in background and redirect output
+start_cmd="${command} ${command_args} &"  # Run in background and redirect output
 
 run_rc_command "$1"
