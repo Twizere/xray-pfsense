@@ -50,11 +50,11 @@ install:
      # Installing the service
 	@echo "Running the service"
     # Check if Xray is running before starting the service
-    if ! pgrep -f "/usr/local/bin/xray" > /dev/null; then
-        service xray start
-    else
-        echo "Xray is already running."
-    fi
+	if ! pgrep -f "/usr/local/bin/xray" > /dev/null; then \
+		service xray start; \
+	else \
+		echo "Xray is already running."; \
+	fi
 
 
 # Clean up (optional)
