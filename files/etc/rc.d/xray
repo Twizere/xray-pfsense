@@ -23,8 +23,11 @@ xray_precmd() {
     if [ ! -d "/var/run" ]; then
         mkdir -p /var/run
     fi
+    if [ ! -d "/var/log" ]; then
+        mkdir -p /var/log
+    fi
 }
 
-start_cmd="${command} ${command_args} &"  # Run in background and redirect output
+start_cmd="${command} ${command_args} -log ${log_file} -pidfile ${pidfile}"
 
 run_rc_command "$1"
