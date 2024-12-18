@@ -30,20 +30,17 @@ start_cmd="start_xray"
 start_xray() {
     # Check if Xray is already running
     if pgrep -f "/usr/local/bin/xray" > /dev/null; then
-        echo -e "\033[0;32mXray is already running.\033[0m"
+        echo "Xray is already running."
     else
         ${command} ${command_args} > /var/log/xray_service.log 2>&1 &
         echo $! > ${pidfile}
         echo "Xray started."
     fi
-    echo -e "\033[0m"
-    
 }
 
 stop_cmd="xray_stop"
 
 xray_stop() {
-    echo -e "\033[0;31"
     if [ -f ${pidfile} ]; then
         kill -TERM $(cat ${pidfile})
         rm -f ${pidfile}
@@ -51,7 +48,6 @@ xray_stop() {
     else
         echo "Xray is not running or pidfile is missing."
     fi
-    echo -e "\033[0m"
 }
 
 run_rc_command "$1"
