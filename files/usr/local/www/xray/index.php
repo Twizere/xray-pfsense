@@ -1,18 +1,10 @@
 <?php
 require_once("guiconfig.inc");
+require_once("pfsense-utils.inc");
+require_once("pkg-utils.inc");
 require_once("/usr/local/pkg/xray.inc");
-
 $pgtitle = array("VPN", "Xray");
 include("head.inc");
-
-if ($_POST['save']) {
-    $config['xray']['loglevel'] = $_POST['loglevel'];
-    write_config("Xray configuration updated.");
-    xray_restart(); // Ensure this function exists in xray.inc
-    $savemsg = "Configuration saved.";
-}
-
-$pconfig = $config['xray'];
 
 ?>
 <body>
