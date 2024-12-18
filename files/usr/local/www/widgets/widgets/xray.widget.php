@@ -2,52 +2,50 @@
 /*
  * xraydemo.widget.php
  * 
- * This is a simple demo widget for pfSense.
- * The widget will display some basic system information.
+ * This widget displays the status of the Xray service, log file location, and configuration.
  * 
  * Copyright (C) 2024 YourName
  * All rights reserved.
  */
 
-// Make sure the user is authenticated
-// if (!is_array($config['system']['widgets']) || !in_array('xraydemo', $config['system']['widgets'])) {
-//     return;
-// }
+// Collect Xray service status
+$xray_status_cmd = "service xray status";
+$xray_status_output = shell_exec($xray_status_cmd);
 
-// Collecting data
-$uptime = shell_exec("uptime");
-$cpu_usage = shell_exec("sysctl -n kern.cp_time");
-$load = shell_exec("sysctl -n vm.loadavg");
+// Xray log file location and configuration file
+$log_file = "/var/log/xray_service.log";
+$config_file = "/usr/local/etc/xray/config.json";
 
-// Check if any of the commands return null or empty
-if (!$uptime) {
-    $uptime = "Error: Unable to fetch uptime.";
+// Check if commands return null or empty
+if (!$xray_status_output) {
+    $xray_status_output = "Error: Unable to fetch Xray service status.";
 }
-if (!$cpu_usage) {
-    $cpu_usage = "Error: Unable to fetch CPU usage.";
-}
-if (!$load) {
-    $load = "Error: Unable to fetch load average.";
-}
+
+// Determine if Xray is running
+$xray_status = strpos($xray_status_output, "is running") !== false ? "Running" : "Stopped";
 
 // Debugging output (log to the system log)
-error_log("XRay VPN Widget - Uptime: " . $uptime);
-error_log("XRay VPN Widget - CPU Usage: " . $cpu_usage);
-error_log("XRay VPN Widget - Load Avg: " . $load);
-
+error_log("XRay VPN Widget - Service Status: " . $xray_status_output);
+error_log("XRay VPN Widget - Log File Location: " . $log_file);
+error_log("XRay VPN Widget - Config File Location: " . $config_file);
 ?>
 
 <div class="widget-content">
     <h3 class="widget-title"><?php echo gettext('XRay VPN Status'); ?></h3>
     <ul class="list-group">
         <li class="list-group-item">
-            <strong><?php echo gettext('System Uptime'); ?>:</strong> <?php echo htmlspecialchars($uptime); ?>
+            <strong><?php echo gettext('XRay Service Status'); ?>:</strong> 
+            <span class="<?php echo $xray_status === 'Running' ? 'text-success' : 'text-danger'; ?>">
+                <?php echo htmlspecialchars($xray_status); ?>
+            </span>
         </li>
         <li class="list-group-item">
-            <strong><?php echo gettext('CPU Usage'); ?>:</strong> <?php echo htmlspecialchars($cpu_usage); ?>
+            <strong><?php echo gettext('Log File Location'); ?>:</strong> 
+            <?php echo htmlspecialchars($log_file); ?>
         </li>
         <li class="list-group-item">
-            <strong><?php echo gettext('Load Average'); ?>:</strong> <?php echo htmlspecialchars($load); ?>
+            <strong><?php echo gettext('Configuration File Location'); ?>:</strong> 
+            <?php echo htmlspecialchars($config_file); ?>
         </li>
     </ul>
 </div>
@@ -63,5 +61,13 @@ error_log("XRay VPN Widget - Load Avg: " . $load);
     .list-group-item {
         font-size: 1em;
         padding: 8px 15px;
+    }
+    .text-success {
+        color: green;
+        font-weight: bold;
+    }
+    .text-danger {
+        color: red;
+        font-weight: bold;
     }
 </style>
