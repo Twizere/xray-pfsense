@@ -1,9 +1,9 @@
 <?php
 // Load the pfSense configuration file (config.xml)
-$config = parse_xml_config("/conf/config.xml");
+$config = parse_xml_pfconfig("/conf/config.xml");
 
 // Function to parse the config and get certificates
-function parse_xml_config($config_file) {
+function parse_xml_pfconfig($config_file) {
     $xml = simplexml_load_file($config_file);
     $certificates = [];
 
@@ -16,7 +16,7 @@ function parse_xml_config($config_file) {
 }
 
 // Generate the dropdown options
-$certificates = parse_xml_config("/conf/config.xml");
+$certificates = parse_xml_pfconfig("/conf/config.xml");
 ?>
 <!-- HTML for the Dropdown -->
 <select name="certificates" id="certificates-dropdown">
