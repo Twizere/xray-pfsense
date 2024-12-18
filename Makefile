@@ -41,8 +41,7 @@ install:
 	install -m 644 ${WRKSRC}/etc/inc/priv/xray.priv.inc ${DEST}/etc/inc/priv/
 	install -m 644 ${WRKSRC}${DEST}/pkg/xray.inc ${DEST}/pkg/
 	install -m 644 ${WRKSRC}${DEST}/www/packages/xray/index.php ${DEST}/www/packages/xray/
-	install -m 644 ${WRKSRC}${DEST}/www/widgets/widgets/xray.widget.php ${DEST}/www/widgets/widgets/
-    install -m 644 ${WRKSRC}${DEST}/www/widgets/widgets/xraycert.widget.php ${DEST}/www/widgets/widgets/
+	install -m 644 ${WRKSRC}${DEST}/www/widgets/widgets/*.php ${DEST}/www/widgets/widgets/
     # Installing the service
 	@echo "Installing the service..."
 	chmod +x ${DEST}/etc/rc.d/xray
