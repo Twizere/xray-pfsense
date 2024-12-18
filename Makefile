@@ -26,7 +26,6 @@ install:
 	${MKDIR} ${DEST}/etc/xray
 	${MKDIR} ${DEST}/etc/inc/priv
 	${MKDIR} ${DEST}/pkg
-	${MKDIR} ${DEST}/www/packages/xray
 	${MKDIR} ${DEST}/www/widgets/widgets
 	${MKDIR} ${DEST}/www/xray
 	${MKDIR} ${DEST}/share/pfSense-pkg-Xray
@@ -41,7 +40,6 @@ install:
 	install -m 644 ${WRKSRC}/etc/xray/config.json ${DEST}/etc/xray/
 	install -m 644 ${WRKSRC}/etc/inc/priv/xray.priv.inc ${DEST}/etc/inc/priv/
 	install -m 644 ${WRKSRC}${DEST}/pkg/xray.xml ${DEST}/pkg/
-	install -m 644 ${WRKSRC}${DEST}/www/packages/xray/index.php ${DEST}/www/packages/xray/
 	install -m 644 ${WRKSRC}${DEST}/www/widgets/widgets/*.php ${DEST}/www/widgets/widgets/
 	install -m 644 ${WRKSRC}${DEST}/www/xray/*.php ${DEST}/www/xray/
 
