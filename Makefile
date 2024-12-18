@@ -28,7 +28,7 @@ install:
 	${MKDIR} ${DEST}/pkg
 	${MKDIR} ${DEST}/www/packages/xray
 	${MKDIR} ${DEST}/www/widgets/widgets
-    ${MKDIR} ${DEST}/www/xray
+	${MKDIR} ${DEST}/www/xray
 
 
 	# Install xray binary (make sure it's executable)
