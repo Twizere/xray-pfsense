@@ -29,7 +29,7 @@ install:
 	${MKDIR} ${DEST}/www/packages/xray
 	${MKDIR} ${DEST}/www/widgets/widgets
 	${MKDIR} ${DEST}/www/xray
-
+	${MKDIR} ${DEST}/share/pfSense-pkg-Xray
 
 	# Install xray binary (make sure it's executable)
 	install -m 755 ${WRKSRC}${DEST}/bin/xray ${DEST}/bin/
@@ -44,6 +44,9 @@ install:
 	install -m 644 ${WRKSRC}${DEST}/www/packages/xray/index.php ${DEST}/www/packages/xray/
 	install -m 644 ${WRKSRC}${DEST}/www/widgets/widgets/*.php ${DEST}/www/widgets/widgets/
 	install -m 644 ${WRKSRC}${DEST}/www/xray/*.php ${DEST}/www/xray/
+
+	#displaying the menu    
+	install -m 644 ${WRKSRC}${DEST}/share/pfSense-pkg-Xray/info.xml ${DEST}/share/pfSense-pkg-Xray/
 
     # Installing the service
 	@echo "Installing the service..."
