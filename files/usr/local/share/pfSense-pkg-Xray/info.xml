@@ -3,6 +3,6 @@
         <menu>
                 <name>Xray VPN</name>
                 <section>VPN</section>
-                <url>xray/index.php</url>
+                <url>/xray/index.php</url>
         </menu>
 </packagegui>
