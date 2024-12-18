@@ -29,7 +29,15 @@ function xray_start() {
 // Function to check the status of the xray service
 function xray_status() {
     exec("service xray status", $output, $return_var);
-    $is_running = strpos(implode("\n", $output), 'active (running)') !== false;
+    $is_running = false;
+
+    // Check if the output contains the text indicating the service is running
+    foreach ($output as $line) {
+        if (strpos($line, 'xray is running') !== false) {
+            $is_running = true;
+            break;
+        }
+    }
 
     return [
         'output' => $output,
