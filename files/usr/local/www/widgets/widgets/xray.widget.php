@@ -12,6 +12,13 @@
 // Path to the Xray configuration file
 $config_file = '/usr/local/etc/xray/config.json';
 
+// Path to the log file
+$log_file = '/var/log/xray_service.log';
+
+// Get the XRay service status
+$status = shell_exec("service xray status");
+$is_running = strpos($status, "running") !== false ? "Running" : "Stopped";
+
 // Check if the configuration file exists
 if (file_exists($config_file)) {
     $config_data = json_decode(file_get_contents($config_file), true);
@@ -43,6 +50,16 @@ error_log("XRay VPN Widget - Xray config file found: " . $config_file);
 
 <div class="widget-content">
     <h3 class="widget-title"><?php echo gettext('XRay VPN Status'); ?></h3>
+
+    <!-- XRay Service Status -->
+    <div class="status">
+        <strong><?php echo gettext('XRay Service Status'); ?>:</strong> <?php echo $is_running; ?>
+    </div>
+
+    <!-- Log File Location -->
+    <div class="log-file">
+        <strong><?php echo gettext('Log File Location'); ?>:</strong> <?php echo htmlspecialchars($log_file); ?>
+    </div>
 
     <?php if (isset($config_data)): ?>
         <!-- Certificates Table -->
@@ -94,6 +111,10 @@ error_log("XRay VPN Widget - Xray config file found: " . $config_file);
     .widget-title {
         font-size: 1.2em;
         margin-bottom: 10px;
+    }
+    .status, .log-file {
+        margin-bottom: 10px;
+        font-size: 1em;
     }
     .table {
         width: 100%;
