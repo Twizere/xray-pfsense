@@ -72,7 +72,7 @@ $section->addInput(new Form_Select(
 // CA Certificate Selection
 $section->addInput(new Form_Select(
     'ca_cert',
-    '*Client Certificate Authority',
+    '*Peer Certificate Authority',
     '',
     cert_build_list('ca', 'Xray')
 ))->setHelp('Select a CA certificate which the VPN will use to verify client certificates.');
