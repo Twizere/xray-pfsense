@@ -21,11 +21,12 @@ include("head.inc");
 // print_r(cert_build_list('cert', 'Xray'));
 
 
-echo "CA Certificates \n";
-cert_build_list('ca', 'Xray');
+echo "<br />CA Certificates <br />";
 $certs = cert_build_list('ca', 'Xray');
+var_dump($certs);
+echo "<br /> one by one <br />";
 foreach($certs as $cert){
-var_dump($cert);
+//var_dump($cert);
 }
 
 
