@@ -32,19 +32,27 @@ foreach ($certs as $certid => $certname) {
     echo "<br />Certificate ID: $certid<br />";
     echo "Certificate Name: $certname<br />";
     echo "Certificate Details:<br />";
+	echo "Certificate :<br />";
     echo "<pre>";
-	$cert_content['Certificate']   = base64_decode($thisca['crt']);
-	$cert_content['Key']   = base64_decode($thisca['prv']);
+	print(base64_decode($thisca['crt']));
+	echo "</pre>";
+
+	echo "Certificate :<br />";
+    echo "<pre>";
+	print(base64_decode($thisca['prv']));
+	echo "</pre>";
+	
+	
     foreach ($cert_content as $key => $value) {
         // Handle long strings (e.g., crt, prv) to avoid overwhelming output
         // if (is_string($value) && strlen($value) > 100) {
         //     $value = substr($value, 0, 100) . '... [truncated]';
         // }
-        echo "$key: $value\n";
+       // echo "$key: $value\n";
     }
 
 
-    echo "</pre>";
+    //echo "</pre>";
 }
 
 
