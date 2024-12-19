@@ -67,25 +67,17 @@ $section->addInput(new Form_Select(
     '*Server Certificate',
     '',
     cert_build_list('cert', 'Xray')
-))->setHelp('Select a certificate which will be used by the Xray server.');
+))->setHelp('Select a certificatewhich will be used by the Xray server.');
 
 // CA Certificate Selection
 $section->addInput(new Form_Select(
     'ca_cert',
-    '*CA Certificate',
+    '*Client Certificate Authority',
     '',
     cert_build_list('ca', 'Xray')
-))->setHelp('Select a CA certificate which the VPN will use to verify both client and server certificates.');
+))->setHelp('Select a CA certificate which the VPN will use to verify client certificates.');
 
 $form->add($section);
-
-// Add Submit Button
-// $form->addGlobal(new Form_Button(
-//     'save',
-//     'Save',
-//     null,
-//     'fa-save'
-// ))->addClass('btn-primary');
 
 print($form);
 
