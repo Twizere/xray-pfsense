@@ -2,6 +2,10 @@
 require_once("guiconfig.inc");
 require_once("pfsense-utils.inc");
 require_once("pkg-utils.inc");
+require_once("filter.inc");
+require_once("auth.inc");
+require_once("certs.inc");
+
 require_once("/usr/local/pkg/xray.inc");
 $pgtitle = array("VPN", "Xray");
 include("head.inc");
@@ -12,7 +16,12 @@ include("head.inc");
 
 <?php if ($savemsg) print_info_box($savemsg); ?>
 
+<div> 
 
+<?php
+print_r(cert_build_list('cert', 'Xray'));
+?>
+</div>
 <form action="index.php" method="post">
     <table class="table">
         <thead>
