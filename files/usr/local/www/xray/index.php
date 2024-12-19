@@ -19,11 +19,11 @@ include("head.inc");
 <div> 
 
 <?php
-echo "Certificates \n"
+echo "Certificates \n";
 print_r(cert_build_list('cert', 'Xray'));
 
 
-echo "CA Certificates \n"
+echo "CA Certificates \n";
 print_r(cert_build_list('ca', 'Xray'));
 
 ?>
