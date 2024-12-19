@@ -22,7 +22,11 @@ include("head.inc");
 
 
 echo "CA Certificates \n";
-print_r(cert_build_list('ca', 'Xray'));
+cert_build_list('ca', 'Xray');
+$certs = cert_build_list('ca', 'Xray');
+foreach($certs as $cert){
+print_r(lookup_ca($cert['refid']));
+}
 
 
 $form = new Form();
