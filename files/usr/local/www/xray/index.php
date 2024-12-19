@@ -27,12 +27,21 @@ var_dump($certs);
 
 echo "<br />Displaying each certificate content:<br />";
 foreach ($certs as $certid => $certname) {
-    $cert_content = lookup_ca($certid); // Retrieve the certificate content using the ID
+    $cert_content = lookup_ca($certid); // Retrieve the certificate details as an array
     echo "<br />Certificate ID: $certid<br />";
     echo "Certificate Name: $certname<br />";
-    echo "Certificate Content:<br />";
-    echo "<pre>" . var_dump($cert_content) . "</pre>"; // Display the content safely
+    echo "Certificate Details:<br />";
+    echo "<pre>";
+    foreach ($cert_content as $key => $value) {
+        // Handle long strings (e.g., crt, prv) to avoid overwhelming output
+        // if (is_string($value) && strlen($value) > 100) {
+        //     $value = substr($value, 0, 100) . '... [truncated]';
+        // }
+        echo "$key: $value\n";
+    }
+    echo "</pre>";
 }
+
 
 
 $form = new Form();
