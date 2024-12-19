@@ -44,4 +44,7 @@ function xray_status() {
         'status' => $is_running ? "Service is running" : "Service is not running"
     ];
 }
+
+
+
 ?>

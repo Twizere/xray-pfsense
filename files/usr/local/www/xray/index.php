@@ -27,11 +27,14 @@ var_dump($certs);
 
 echo "<br />Displaying each certificate content:<br />";
 foreach ($certs as $certid => $certname) {
-    $cert_content = lookup_ca($certid); // Retrieve the certificate details as an array
+    $ca_item_config = lookup_ca($id);
+	$thisca = &$ca_item_config['item'];
     echo "<br />Certificate ID: $certid<br />";
     echo "Certificate Name: $certname<br />";
     echo "Certificate Details:<br />";
     echo "<pre>";
+	$cert_content['Certificate']   = base64_decode($thisca['crt']);
+	$cert_content['Key']   = base64_decode($thisca['prv']);
     foreach ($cert_content as $key => $value) {
         // Handle long strings (e.g., crt, prv) to avoid overwhelming output
         // if (is_string($value) && strlen($value) > 100) {
@@ -39,6 +42,8 @@ foreach ($certs as $certid => $certname) {
         // }
         echo "$key: $value\n";
     }
+
+
     echo "</pre>";
 }
 
