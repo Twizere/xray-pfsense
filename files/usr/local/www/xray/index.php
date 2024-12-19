@@ -39,12 +39,12 @@ $section->addInput(new Form_Select(
 	'certref',
 	'*CA Certificate',
 	$pconfig['certref'],
-	cert_build_list('cert', 'Xray')
+	cert_build_list('ca', 'Xray')
 ))->setHelp('Select a CA certificate which the vpn will use to verify both client and  server certificates');
 
+$form->add($section);
 
 print($form);
-print($section);
 
 ?>
 
