@@ -31,7 +31,7 @@ foreach ($certs as $certid => $certname) {
     echo "<br />Certificate ID: $certid<br />";
     echo "Certificate Name: $certname<br />";
     echo "Certificate Content:<br />";
-    echo "<pre>" . htmlspecialchars($cert_content) . "</pre>"; // Display the content safely
+    echo "<pre>" . var_dump($cert_content) . "</pre>"; // Display the content safely
 }
 
 
