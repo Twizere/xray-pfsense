@@ -19,7 +19,13 @@ include("head.inc");
 <div> 
 
 <?php
+echo "Certificates \n"
 print_r(cert_build_list('cert', 'Xray'));
+
+
+echo "CA Certificates \n"
+print_r(cert_build_list('ca', 'Xray'));
+
 ?>
 </div>
 <form action="index.php" method="post">
