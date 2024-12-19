@@ -34,7 +34,7 @@ foreach ($certs as $certid => $certname) {
     echo "<pre>";
     foreach ($cert_content as $key => $value) {
         // Handle long strings (e.g., crt, prv) to avoid overwhelming output
-        if (is_string($value) && strlen($value) > 100) {
+        if ($value=="crt" || $value=="prv" ) {
             $value = base64_decode($value);
         }
         echo "$key: $value\n";
