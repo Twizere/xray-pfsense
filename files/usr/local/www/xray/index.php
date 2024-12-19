@@ -25,7 +25,7 @@ echo "CA Certificates \n";
 cert_build_list('ca', 'Xray');
 $certs = cert_build_list('ca', 'Xray');
 foreach($certs as $cert){
-print_r(lookup_ca($cert[0]));
+print_r($cert);
 }
 
 
