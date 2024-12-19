@@ -24,9 +24,14 @@ include("head.inc");
 echo "<br />CA Certificates <br />";
 $certs = cert_build_list('ca', 'Xray');
 var_dump($certs);
-echo "<br /> one by one <br />";
-foreach($certs as $cert){
-//var_dump($cert);
+
+echo "<br />Displaying each certificate content:<br />";
+foreach ($certs as $certid => $certname) {
+    $cert_content = lookup_ca($certid); // Retrieve the certificate content using the ID
+    echo "<br />Certificate ID: $certid<br />";
+    echo "Certificate Name: $certname<br />";
+    echo "Certificate Content:<br />";
+    echo "<pre>" . htmlspecialchars($cert_content) . "</pre>"; // Display the content safely
 }
 
 
