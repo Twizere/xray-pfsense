@@ -33,12 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Update the certificates section
             $config['inbounds'][0]['streamSettings']['tlsSettings']['certificates'] = [
                 [
-                    'certificate' => explode("\n", $serverCert['crt']),
-                    'key' => explode("\n", $serverCert['prv'])
+                    'certificate' => explode("\n", base64_decode($serverCert['crt'])),
+                    'key' => explode("\n", base64_decode($serverCert['prv']))
                 ],
                 [
                     'usage' => 'verify',
-                    'certificate' => explode("\n", $caCert['crt'])
+                    'certificate' => explode("\n", base64_decode($caCert['crt']))
                 ]
             ];
 
