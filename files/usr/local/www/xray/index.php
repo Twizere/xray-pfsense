@@ -16,44 +16,39 @@ include("head.inc");
 
 <?php if ($savemsg) print_info_box($savemsg); ?>
 
-<div> 
-
 <?php
-echo "Certificates \n";
-print_r(cert_build_list('cert', 'Xray'));
+// echo "Certificates \n";
+// print_r(cert_build_list('cert', 'Xray'));
 
 
-echo "CA Certificates \n";
-print_r(cert_build_list('ca', 'Xray'));
+// echo "CA Certificates \n";
+// print_r(cert_build_list('ca', 'Xray'));
 
 
 $form = new Form();
 
-$section = new Form_Section('General Information');
+$section = new Form_Section('Authentication Certificates');
+$section->addInput(new Form_Select(
+	'certref',
+	'*Server Certificate',
+	$pconfig['certref'],
+	cert_build_list('cert', 'Xray')
+))->setHelp('Select a certificate which will be used by Xray server');
+
+$section->addInput(new Form_Select(
+	'certref',
+	'*CA Certificate',
+	$pconfig['certref'],
+	cert_build_list('cert', 'Xray')
+))->setHelp('Select a CA certificate which the vpn will use to verify both client and  server certificates');
+
 
 print($form);
 print($section);
 
 ?>
-</div>
-<form action="index.php" method="post">
-    <table class="table">
-        <thead>
-            <tr>
-                <th colspan="2">Xray Configuration</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Log Level</td>
-                <td>
-                    <input name="loglevel" type="text" value="<?=htmlspecialchars($pconfig['loglevel'])?>" />
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <button type="submit" name="save" class="btn btn-primary">Save</button>
-</form>
+
+ 
 
 <?php include("foot.inc"); ?>
 </body>
