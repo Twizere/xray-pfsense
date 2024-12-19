@@ -80,12 +80,12 @@ $section->addInput(new Form_Select(
 $form->add($section);
 
 // Add Submit Button
-$form->addGlobal(new Form_Button(
-    'save',
-    'Save',
-    null,
-    'fa-save'
-))->addClass('btn-primary');
+// $form->addGlobal(new Form_Button(
+//     'save',
+//     'Save',
+//     null,
+//     'fa-save'
+// ))->addClass('btn-primary');
 
 print($form);
 
