@@ -31,15 +31,14 @@ foreach ($certs as $certid => $certname) {
     echo "<br />Certificate ID: $certid<br />";
     echo "Certificate Name: $certname<br />";
     echo "Certificate Details:<br />";
-    echo "<pre>";
+   
     foreach ($cert_content as $key => $value) {
         // Handle long strings (e.g., crt, prv) to avoid overwhelming output
         if ($key=="crt" || $key=="prv" ) {
             $value = base64_decode($value);
         }
-        echo "$key: $value\n";
+        echo "$key:<br /><pre>$value</pre>";
     }
-    echo "</pre>";
 }
 
 
