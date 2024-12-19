@@ -21,8 +21,8 @@ include("head.inc");
 // print_r(cert_build_list('cert', 'Xray'));
 
 
-// echo "CA Certificates \n";
-// print_r(cert_build_list('ca', 'Xray'));
+echo "CA Certificates \n";
+die(cert_build_list('ca', 'Xray'));
 
 
 $form = new Form();
