@@ -9,7 +9,7 @@ $pgtitle = array("VPN", "Xray");
 include("head.inc");
 
 // Define the path to the Xray configuration file
-$configFilePath = '/path/to/xray/config.json';
+$configFilePath = '/usr/local/etc/xray/config.json';
 
 // Initialize default values
 $currentConfig = [
