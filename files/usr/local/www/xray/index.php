@@ -143,7 +143,7 @@ $form->add($section);
 $form->add($clientsSection);
 $form->add($streamSection);
 $form->add($tlsSection);
-//print($form);
+print($form);
 
 include("foot.inc");
 ?>
