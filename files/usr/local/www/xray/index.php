@@ -126,7 +126,7 @@ $tlsSection->addInput(new Form_Textarea(
 $tlsSection->addInput(new Form_Select(
     'server_cert',
     '*Server Certificate',
-    $currentConfig['server_cert'],
+    '',
     cert_build_list('cert', 'Xray')
 ))->setHelp('Select a certificate that will be used by the Xray server.');
 
@@ -134,7 +134,7 @@ $tlsSection->addInput(new Form_Select(
 $tlsSection->addInput(new Form_Select(
     'ca_cert',
     '*Peer Certificate Authority',
-    $currentConfig['ca_cert'],
+    '',
     cert_build_list('ca', 'Xray')
 ))->setHelp('Select a CA certificate to verify client certificates.');
 
