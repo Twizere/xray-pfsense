@@ -8,7 +8,7 @@ require_once("certs.inc");
 
 $pgtitle = array("VPN", "Xray");
 include("head.inc");
-print_r(cert_build_list('ca', 'IPsec'));
+print_r(cert_build_list('ca', 'Xray'));
 // Define the path to the Xray configuration file
 $configFilePath = '/usr/local/etc/xray/config.json';
 
