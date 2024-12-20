@@ -1,9 +1,9 @@
 <?php
+require_once("functions.inc");
 require_once("guiconfig.inc");
 require_once("pfsense-utils.inc");
 require_once("pkg-utils.inc");
 require_once("filter.inc");
-require_once("auth.inc");
 require_once("certs.inc");
 
 $pgtitle = array("VPN", "Xray");
@@ -143,8 +143,7 @@ $form->add($section);
 $form->add($clientsSection);
 $form->add($streamSection);
 $form->add($tlsSection);
-//print($form);
+print($form);
 
-print_r(cert_build_list('cert', 'Xray'));
 include("foot.inc");
 ?>
