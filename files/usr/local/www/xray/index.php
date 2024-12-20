@@ -4,6 +4,7 @@ require_once("pfsense-utils.inc");
 require_once("pkg-utils.inc");
 require_once("filter.inc");
 require_once("auth.inc");
+require_once("certs.inc");
 
 $pgtitle = array("VPN", "Xray");
 include("head.inc");
@@ -22,8 +23,6 @@ $currentConfig = [
     'security' => 'tls',
     'tls_server_name' => '',
     'tls_alpn' => 'h2,http/1.1',
-    'server_cert' => '',
-    'ca_cert' => ''
 ];
 
 // Load the current configuration from the JSON file if it exists
@@ -136,7 +135,7 @@ $tlsSection->addInput(new Form_Select(
     '*Peer Certificate Authority',
     '',
     cert_build_list('ca', 'Xray')
-))->setHelp('Select a CA certificate to verify client certificates.');
+))->setHelp('Select a certificate authority to validate the peer certificate.');
 
 // Add sections to the form
 $form->add($section);
