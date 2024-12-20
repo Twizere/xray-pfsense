@@ -26,11 +26,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $savemsg = "Error: Unable to read or parse the JSON configuration file.";
         } else {
             // Update the JSON configuration
-            $config['inbounds'][0]['port'] = (int)$port;
-            $config['inbounds'][0]['settings']['decryption'] = $decryption;
-            $config['inbounds'][0]['settings']['clients'] = json_decode($clients, true) ?? [];
-            $config['inbounds'][0]['streamSettings']['network'] = $network;
-            $config['inbounds'][0]['streamSettings']['security'] = $security;
+            // Process inbound settings
+            $config['inbounds'][0]['listen'] = $_POST['listen'] ?? '0.0.0.0';
+            $config['inbounds'][0]['port'] = intval($_POST['port']) ?? 49000;
+            $config['inbounds'][0]['protocol'] = $_POST['protocol'] ?? 'vless';
+
+            // Process clients
+            $clients = json_decode($_POST['clients'], true);
+            if (json_last_error() === JSON_ERROR_NONE && is_array($clients)) {
+                $config['inbounds'][0]['settings']['clients'] = $clients;
+            } else {
+                // Handle invalid client input
+                header('Location: xray_ui.php?error=Invalid clients JSON');
+                exit;
+            }
+
+            // Process decryption
+            $config['inbounds'][0]['settings']['decryption'] = $_POST['decryption'] ?? 'none';
+
+            // Process stream settings
+            $config['inbounds'][0]['streamSettings']['network'] = $_POST['network'] ?? 'tcp';
+            $config['inbounds'][0]['streamSettings']['security'] = $_POST['security'] ?? 'tls';
+
+            // Process TLS settings
+            $config['inbounds'][0]['streamSettings']['tlsSettings']['serverName'] = $_POST['tls_server_name'] ?? '';
+            $config['inbounds'][0]['streamSettings']['tlsSettings']['alpn'] = explode(',', $_POST['tls_alpn'] ?? 'h2,http/1.1');
+
+            // Keep default values for allowInsecure and disableSystemRoot
+            $config['inbounds'][0]['streamSettings']['tlsSettings']['allowInsecure'] = false;
+            $config['inbounds'][0]['streamSettings']['tlsSettings']['disableSystemRoot'] = true;
+
             $config['inbounds'][0]['streamSettings']['tlsSettings']['certificates'] = [
                 [
                     'certificate' => explode("\n", base64_decode($serverCert['crt'])),
@@ -55,6 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Display result and redirect back to the UI
-header("Location: xray_ui.php?savemsg=" . urlencode($savemsg));
+header("Location: index.php?savemsg=" . urlencode($savemsg));
 exit();
 ?>
