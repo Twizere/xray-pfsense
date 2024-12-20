@@ -9,6 +9,8 @@ require_once("certs.inc");
 $pgtitle = array("VPN", "Xray");
 include("head.inc");
 
+$client_certificates = cert_build_list('cert', 'Xray');
+$ca_certificates = cert_build_list('ca', 'Xray');
 // Define the path to the Xray configuration file
 $configFilePath = '/usr/local/etc/xray/config.json';
 
@@ -78,7 +80,7 @@ $section->addInput(new Form_Select(
 	'server_cert',
 	'*Server Certificate',
 	$pconfig['server_cert'],
-	cert_build_list('cert', 'Xray')
+	$client_certificates
 ))->setHelp('Select a certificate which will be used by the Xray server.');
 
 // CA Certificate Selection
@@ -86,7 +88,7 @@ $section->addInput(new Form_Select(
     'ca_cert',
     '*Peer Certificate Authority',
     $pconfig['ca_cert'],
-    ['cert1' => 'Certificate 1', 'cert2' => 'Certificate 2']
+    $ca_certificates
 ))->setHelp('Select a certificate authority to validate the peer certificate.');
 
 
