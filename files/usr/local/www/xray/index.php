@@ -86,7 +86,7 @@ $section->addInput(new Form_Select(
     'ca_cert',
     '*Peer Certificate Authority',
     $pconfig['ca_cert'],
-    cert_build_list('ca', 'Xray')
+    ['cert1' => 'Certificate 1', 'cert2' => 'Certificate 2']
 ))->setHelp('Select a certificate authority to validate the peer certificate.');
 
 
