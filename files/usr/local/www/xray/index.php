@@ -8,7 +8,7 @@ require_once("certs.inc");
 
 $pgtitle = array("VPN", "Xray");
 include("head.inc");
-print_r(cert_build_list('ca', 'Xray'));
+
 // Define the path to the Xray configuration file
 $configFilePath = '/usr/local/etc/xray/config.json';
 
@@ -46,7 +46,7 @@ if (file_exists($configFilePath)) {
 }
 
 // Create the form
-$form = new Form('Save Configurations', ); 
+$form = new Form('Save Configurations'); 
 $form->setAction('xray_process.php');
 $section = new Form_Section('Inbound Settings');
 
