@@ -46,7 +46,8 @@ if (file_exists($configFilePath)) {
 }
 
 // Create the form
-$form = new Form('Submit', 'xray_process.php'); // Submit to the backend file
+$form = new Form('Save Configurations', ); 
+$form->setAction('xray_process.php');
 $section = new Form_Section('Inbound Settings');
 
 // Server Listening
@@ -122,7 +123,7 @@ $tlsSection->addInput(new Form_Textarea(
 ))->setHelp('Enter Application-Layer Protocol Negotiation (ALPN) values, separated by commas.');
 
 // Server Certificate Selection
-$section->addInput(new Form_Select(
+$tlsSection->addInput(new Form_Select(
     'server_cert',
     '*Server Certificate',
     '',
