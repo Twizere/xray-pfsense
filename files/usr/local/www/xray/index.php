@@ -124,7 +124,7 @@ $tlsSection->addInput(new Form_Textarea(
 
 // Server Certificate Selection
 $tlsSection->addInput(new Form_Select(
-    'server_cert',
+    'certref',
     '*Server Certificate',
     '',
     cert_build_list('cert', 'Xray')
@@ -132,7 +132,7 @@ $tlsSection->addInput(new Form_Select(
 
 // CA Certificate Selection
 $tlsSection->addInput(new Form_Select(
-    'ca_cert',
+    'certref',
     '*Peer Certificate Authority',
     '',
     cert_build_list('ca', 'Xray')
