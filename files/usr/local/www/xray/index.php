@@ -75,21 +75,6 @@ $section->addInput(new Form_Select(
     ['vless' => 'VLESS', 'vmess' => 'VMess', 'trojan' => 'Trojan']
 ))->setHelp('Select the protocol for inbound connections.');
 
-// Server Certificate Selection
-$section->addInput(new Form_Select(
-	'server_cert',
-	'*Server Certificate',
-	$pconfig['server_cert'],
-	$client_certificates
-))->setHelp('Select a certificate which will be used by the Xray server.');
-
-// CA Certificate Selection
-$section->addInput(new Form_Select(
-    'ca_cert',
-    '*Peer Certificate Authority',
-    $pconfig['ca_cert'],
-    $ca_certificates
-))->setHelp('Select a certificate authority to validate the peer certificate.');
 
 
 // Clients - Dynamically Generated
@@ -140,6 +125,22 @@ $tlsSection->addInput(new Form_Textarea(
     'ALPN',
     $currentConfig['tls_alpn']
 ))->setHelp('Enter Application-Layer Protocol Negotiation (ALPN) values, separated by commas.');
+
+// Server Certificate Selection
+$tlsSection->addInput(new Form_Select(
+	'server_cert',
+	'*Server Certificate',
+	$pconfig['server_cert'],
+	$client_certificates
+))->setHelp('Select a certificate which will be used by the Xray server.');
+
+// CA Certificate Selection
+$tlsSection->addInput(new Form_Select(
+    'ca_cert',
+    '*Peer Certificate Authority',
+    $pconfig['ca_cert'],
+    $ca_certificates
+))->setHelp('Select a certificate authority to validate the peer certificate.');
 
 
 // Add sections to the form
