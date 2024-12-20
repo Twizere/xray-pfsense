@@ -124,17 +124,17 @@ $tlsSection->addInput(new Form_Textarea(
 
 // Server Certificate Selection
 $tlsSection->addInput(new Form_Select(
-    'certref',
-    '*Server Certificate',
-    '',
-    cert_build_list('cert', 'Xray')
+	'server_cert',
+	'*Server Certificate',
+	$pconfig['server_cert'],
+	cert_build_list('cert', 'Xray')
 ))->setHelp('Select a certificate which will be used by the Xray server.');
 
 // CA Certificate Selection
 $tlsSection->addInput(new Form_Select(
-    'certref',
+    'ca_cert',
     '*Peer Certificate Authority',
-    '',
+    $pconfig['ca_cert'],
     cert_build_list('ca', 'Xray')
 ))->setHelp('Select a certificate authority to validate the peer certificate.');
 
@@ -143,6 +143,8 @@ $form->add($section);
 $form->add($clientsSection);
 $form->add($streamSection);
 $form->add($tlsSection);
-print($form);
+//print($form);
+
+print_r(cert_build_list('cert', 'Xray'));
 include("foot.inc");
 ?>
