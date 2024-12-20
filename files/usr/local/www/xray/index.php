@@ -122,12 +122,12 @@ $tlsSection->addInput(new Form_Textarea(
 ))->setHelp('Enter Application-Layer Protocol Negotiation (ALPN) values, separated by commas.');
 
 // Server Certificate Selection
-$tlsSection->addInput(new Form_Select(
+$section->addInput(new Form_Select(
     'server_cert',
     '*Server Certificate',
     '',
     cert_build_list('cert', 'Xray')
-))->setHelp('Select a certificate that will be used by the Xray server.');
+))->setHelp('Select a certificate which will be used by the Xray server.');
 
 // CA Certificate Selection
 $tlsSection->addInput(new Form_Select(
