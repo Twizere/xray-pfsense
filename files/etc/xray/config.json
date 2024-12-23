@@ -33,7 +33,10 @@
                     ],
                     "certificates": [
                         {
-                           
+                           "ocspStapling": 60,
+                            "oneTimeLoading": false,
+                            "usage": "encipherment",
+                            "buildChain": false, 
                            "certificate": [
                               "--BEGIN CERTIFICATE--",
                               "MIICwDCCAaigAwIBAgIRAO16JMdESAuHidFYJAR/7kAwDQYJKoZIhvcNAQELBQAw",
