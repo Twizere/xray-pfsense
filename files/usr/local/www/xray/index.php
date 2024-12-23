@@ -9,6 +9,14 @@ require_once("certs.inc");
 $pgtitle = array("VPN", "Xray");
 include("head.inc");
 
+$tab_array = array();
+$tab_array[] = array(gettext("Server"), true, "index.php");
+$tab_array[] = array(gettext("Clients"), false, "index.php");
+$tab_array[] = array(gettext("Client Export"), false, "index.php");
+add_package_tabs("Xray", $tab_array);
+display_top_tabs($tab_array);
+
+
 $client_certificates = cert_build_list('cert', 'Xray');
 $ca_certificates = cert_build_list('ca', 'Xray');
 // Define the path to the Xray configuration file
