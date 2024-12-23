@@ -11,7 +11,7 @@ include("head.inc");
 
 $tab_array = array();
 $tab_array[] = array(gettext("Server"), true, "index.php");
-$tab_array[] = array(gettext("Clients"), false, "index.php");
+$tab_array[] = array(gettext("Clients"), false, "clients.php");
 $tab_array[] = array(gettext("Client Export"), false, "index.php");
 add_package_tabs("Xray", $tab_array);
 display_top_tabs($tab_array);
