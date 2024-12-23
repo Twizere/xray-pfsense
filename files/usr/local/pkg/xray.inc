@@ -46,5 +46,10 @@ function xray_status() {
 }
 
 
+// Function to generate a UUID
+function xray_generate_uuid() {
+    exec("/usr/local/bin/xray uuid", $output, $return_var);
+    return $return_var === 0 ? trim($output[0]) : null;
+}
 
 ?>

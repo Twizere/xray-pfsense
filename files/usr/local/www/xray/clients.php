@@ -1,6 +1,7 @@
 <?php
 require_once("guiconfig.inc");
-require_once("util.inc"); // For uuidgen()
+require_once("util.inc"); 
+require_once("xray.inc");
 include("head.inc");
 
 $tab_array = array();
@@ -69,8 +70,9 @@ if ($_POST) {
 
     if (isset($_POST['add_new'])) {
         // Add a new client
+        $uuid = xray_generate_uuid();
         $newClient = [
-            "id" => uuidgen(),
+            "id" => $uuid,
             "level" => intval($_POST['new_level']),
             "email" => $_POST['new_email']
         ];
