@@ -92,7 +92,8 @@ if ($_POST) {
 }
 
 // Display the form
-$form = new Form();
+$displayForm = new Form();
+$newClientsForm = new Form();
 
 // Display existing clients in a table
 $clientsSection = new Form_Section('Existing Clients');
@@ -113,7 +114,8 @@ $clientsTable .= '</tbody></table>';
 $clientsSection->addInput(new Form_StaticText('', $clientsTable));
 
 // Add the table to the form
-$form->add($clientsSection);
+$displayForm->add($clientsSection);
+
 
 // Add a section for adding new clients
 $newClientSection = new Form_Section('Add New Client');
@@ -139,14 +141,7 @@ $newClientSection->addInput(new Form_Button(
 ))->addClass('btn-success');
 
 // Add sections to the form
-$form->add($newClientSection);
-$form->addGlobal(new Form_Button(
-    'save',
-    'Save Changes',
-    null,
-    'fa-save'
-))->addClass('btn-primary');
-
+$newClientsForm->add($newClientSection);
 // Display any messages
 if (isset($savemsg)) {
     print_info_box($savemsg);
@@ -156,6 +151,7 @@ if (!empty($inputErrors)) {
     print_input_errors($inputErrors);
 }
 
-print($form);
+print($displayForm);
+print($newClientsForm);
 
 include("foot.inc");
