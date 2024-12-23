@@ -1,6 +1,7 @@
 <?php
 require_once("guiconfig.inc");
 require_once("util.inc"); // For uuidgen()
+include("head.inc");
 
 $tab_array = array();
 $tab_array[] = array(gettext("Server"), false, "index.php");
